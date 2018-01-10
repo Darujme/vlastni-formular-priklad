@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<title>Příklad dárcovského formuláře</title>
+
+	<link rel="stylesheet" href="style.css" media="screen">
+</head>
+
+<body class="template-darcovstvi2">
+	<div class="site">
+
+		<div class="page view-np view-card">
+			<div class="container view-1000">
+				<!-- DOPLŇTE ID VAŠEHO RPOJEKTU MÍSTO id_vaseho_projektu V URL ZDE -->
+				<form action="https://www.darujme.cz/darovat/id_vaseho_projektu" method="GET" class="form">
+
+					<input type="hidden" name="currency" value="Kč">
+					<input type="hidden" name="locale" value="cs">
+
+					<div class="page-in basic">
+						<h1 class="form-title title view-section">Jak často chcete darovat</h1>
+
+						<div class="form-row">
+
+							<div class="form-radiolist js-radiolist" data-target="#radiolistbox-target">
+								<div class="radio">
+									<input class="radio-control js-frequency" type="radio" name="frequency" id="frm-frequency-monthly" required data-nette-rules='[{"op":":filled","msg":"Vyberte frekvenci platby."}]'
+									 checked value="monthly">
+									<label class="radio-icon" for="frm-frequency-monthly"></label>
+									<label class="radio-label" for="frm-frequency-monthly">Měsíčně</label>
+								</div>
+								<div class="radio">
+									<input class="radio-control js-frequency" type="radio" name="frequency" id="frm-frequency-once" required data-nette-rules='[{"op":":filled","msg":"Vyberte frekvenci platby."}]'
+									 value="once">
+									<label class="radio-icon" for="frm-frequency-once"></label>
+									<label class="radio-label" for="frm-frequency-once">Jednorázově</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-in basic view-ps">
+						<h1 class="form-title title view-section">Vyberte částku daru</h1>
+
+						<div class="form-row">
+							<div class="form-radiolist js-radiolist" data-target="#radiolistbox-target2">
+								<div class="radio">
+									<input id="amount100" value="100" name="amount" type="radio" class="radio-control js-plan" data-text="Dar 300 Kč nám pomůže dělat naši práci."
+									 data-title="100 Kč">
+									<label for="amount100" class="radio-icon"></label>
+									<label for="amount100" class="radio-label">100 Kč</label>
+								</div>
+
+								<div class="radio">
+									<input id="amount500" value="500" name="amount" type="radio" class="radio-control js-plan" data-text="Dar 500 Kč nám pomůže dělat naši práci ještě lépe."
+									 data-title="500 Kč">
+									<label for="amount500" class="radio-icon"></label>
+									<label for="amount500" class="radio-label">500 Kč</label>
+								</div>
+
+								<div class="radio">
+									<input id="amount1000" value="1000" name="amount" type="radio" class="radio-control js-plan" data-text="Dar 1000 Kč nám pomůže hodně."
+									 data-title="1000 Kč">
+									<label for="amount1000" class="radio-icon"></label>
+									<label for="amount1000" class="radio-label">1000 Kč</label>
+								</div>
+
+								<div class="radio">
+									<input id="amount-custom" name="amount" type="radio" class="radio-control js-customamount" data-text="Váš dar nám výrazně pomůže." data-title="Váš dar">
+									<label for="amount-custom" class="radio-icon"></label>
+									<label for="amount-custom" class="radio-label">Vlastní částka</label>
+								</div>
+
+								<label id="form-customamount" class="form-label hide">
+									<div class="form-label-text">Zadejte částku: </div>
+									<input type="number" name="customamount" class="field" id="frm-customamount" data-nette-rules='[{"op":":equal","rules":[{"op":":filled","msg":"Zadejte částku."}],"control":"amount","arg":"custom"}]'>
+								</label>
+
+							</div>
+						</div>
+
+						<div id="radiolistbox-target2" class="boxbg form-radiolistbox basic">
+							<h2 class="title red fprimary">??? Kč</h2>
+							<p>Vyberte, kolik můžete darovat</p>
+						</div>
+
+					</div>
+
+					<div class="page-in basic view-ps">
+						<h1 class="form-title title view-section">Vaše osobní údaje</h1>
+
+						<div class="form-group">
+
+							<div class="form-row">
+								<div class="checkbox">
+									<input class="checkbox-control js-companygroup" type="checkbox" name="company" id="frm-company">
+									<label class="checkbox-icon" for="frm-company"></label>
+									<label class="checkbox-label form-label-text" for="frm-company">Daruji jako firma</label>
+								</div>
+							</div>
+
+							<div id="form-companygroup" class="hide">
+								<h2 class="form-title title view-article">Firma</h2>
+
+								<div class="form-row">
+									<label class="form-label">
+										<div class="form-label-text">Název firmy:
+											<span>*</span>
+										</div>
+										<input type="text" name="custom[companyname]" class="field" id="frm-custom-companyname" data-nette-rules='[{"op":":equal","rules":[{"op":":filled","msg":"Zadejte název firmy."}],"control":"company","arg":true}]'>
+									</label>
+								</div>
+
+								<div class="form-row">
+									<label class="form-label">
+										<div class="form-label-text">IČO:
+											<span>*</span>
+										</div>
+										<input type="text" name="custom[companyic]" class="field" id="frm-custom-companyic" data-nette-rules='[{"op":":equal","rules":[{"op":":filled","msg":"Zadejte IČO firmy."}],"control":"company","arg":true}]'>
+									</label>
+
+									<label class="form-label">
+										<div class="form-label-text">DIČ: </div>
+										<input type="text" name="custom[companydic]" class="field" id="frm-custom-companydic">
+									</label>
+								</div>
+
+								<div class="form-row">
+									<label class="form-label">
+										<div class="form-label-text">Sídlo firmy:</div>
+										<input type="text" name="custom[companystreet]" class="field" id="frm-custom-companystreet">
+										<div class="form-label-desc">Včetně popisného čísla</div>
+									</label>
+								</div>
+
+								<div class="form-row">
+									<label class="form-label">
+										<div class="form-label-text">Město:</div>
+										<input type="text" name="custom[companycity]" class="field" id="frm-custom-companycity">
+									</label>
+
+									<label class="form-label">
+										<div class="form-label-text">PSČ:</div>
+										<input type="text" name="custom[companypostcode]" class="field" id="frm-custom-companypostcode">
+									</label>
+								</div>
+
+								<h2 class="form-title title view-article">Kontaktní osoba</h2>
+
+								<div class="form-row">
+									<div class="checkbox">
+										<input type="checkbox" id="copyaddress" name="sameaddress" class="checkbox-control js-copyaddress">
+										<label for="copyaddress" class="checkbox-icon"></label>
+										<label for="copyaddress" class="checkbox-label form-label-text">Adresa je stejná jako sídlo firmy</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<label class="form-label">
+									<div class="form-label-text">Jméno:
+										<span>*</span>
+									</div>
+									<input type="text" name="firstName" class="field" id="frm-firstName" required data-nette-rules='[{"op":":filled","msg":"Zadejte jméno a příjmení."}]'>
+								</label>
+
+								<label class="form-label">
+									<div class="form-label-text">Příjmení:
+										<span>*</span>
+									</div>
+									<input type="text" name="lastName" class="field" id="frm-lastName" required data-nette-rules='[{"op":":filled","msg":"Zadejte příjmení."}]'>
+								</label>
+							</div>
+
+							<div class="form-row">
+								<label class="form-label">
+									<div class="form-label-text">E-mail:
+										<span>*</span>
+									</div>
+									<input type="email" name="email" class="field" id="frm-email" required data-nette-rules='[{"op":":filled","msg":"Zadejte email."},{"op":":email","msg":"Zadejte email ve správném formátu."}]'>
+								</label>
+
+								<label class="form-label">
+									<div class="form-label-text">Telefon:</div>
+									<input type="text" name="phone" class="field" id="frm-phone" data-nette-rules='[{"op":"optional"},{"op":":filled","rules":[{"op":":pattern","msg":"prosím zadejte korektní telefon","arg":"^[+(]{0,2}[0-9 ().-]{9,}"}],"control":"phone"}]'>
+								</label>
+							</div>
+
+							<div class="form-row">
+								<label class="form-label">
+									<div class="form-label-text">Ulice a ČP:
+										<span class="wantDonationCertificate-req hide">*</span>
+									</div>
+									<input type="text" name="street" class="field" id="frm-street" data-nette-rules='[{"op":"optional"},{"op":":equal","rules":[{"op":":filled","msg":"Zadejte ulici."}],"control":"wantDonationCertificate","arg":true}]'>
+								</label>
+
+							</div>
+
+							<div class="form-row">
+								<label class="form-label">
+									<div class="form-label-text">Město:
+										<span class="wantDonationCertificate-req hide">*</span>
+									</div>
+									<input type="text" name="city" class="field" id="frm-city" data-nette-rules='[{"op":"optional"},{"op":":equal","rules":[{"op":":filled","msg":"Zadejte město."}],"control":"wantDonationCertificate","arg":true}]'>
+								</label>
+
+								<label class="form-label">
+									<div class="form-label-text">PSČ:
+										<span class="wantDonationCertificate-req hide">*</span>
+									</div>
+									<input type="text" name="postcode" class="field" id="frm-postcode" data-nette-rules='[{"op":"optional"},{"op":":equal","rules":[{"op":":filled","msg":"Zadejte PSČ."}],"control":"wantDonationCertificate","arg":true}]'>
+								</label>
+							</div>
+
+						</div>
+					</div>
+					<div class="page-in basic view-ps">
+						<h1 class="form-title title view-section">Způsob platby</h1>
+
+						<div class="form-group">
+
+							<div class="form-row">
+								<div class="form-radiorows">
+									<div class="radio">
+										<input class="radio-control js-payment" type="radio" name="paymentMethod" id="frm-paymentMethod-proxypay_charge" required
+										 data-nette-rules='[{"op":":filled","msg":"Vyberte způsob platby."}]' checked value="proxypay_charge" value="Chci přispět online kartou">
+										<label class="radio-label" title="Chci přispět online kartou" for="frm-paymentMethod-proxypay_charge">Chci přispět online kartou</label>
+									</div>
+									<div class="radio">
+										<input class="radio-control js-payment" type="radio" name="paymentMethod" id="frm-paymentMethod-funds_transfer" required
+										 data-nette-rules='[{"op":":filled","msg":"Vyberte způsob platby."}]' value="funds_transfer">
+										<label class="radio-label" title="Chci přispět převodem" for="frm-paymentMethod-funds_transfer">Chci přispět převodem</label>
+									</div>
+								</div>
+							</div>
+
+							<input id="monthsRecurring" type="hidden" name="monthsRecurring" value="-2">
+
+						</div>
+					</div>
+
+					<div class="page-footer">
+						<div class="form-footer-text"></div>
+						<div class="form-footer-terms">
+							<div class="checkbox">
+								<input class="checkbox-control js-wantDonationCertificate" type="checkbox" name="wantDonationCertificate" id="frm-wantDonationCertificate">
+								<label class="checkbox-icon" for="frm-wantDonationCertificate"></label>
+								<label class="checkbox-label" for="frm-wantDonationCertificate">Chci obdržet potvrzení o daru</label>
+							</div>
+
+							<div class="checkbox">
+								<input class="checkbox-control" type="checkbox" name="agree" id="frm-agree" required data-nette-rules='[{"op":":filled","msg":"Je nutné souhlasit s podmínkami DARUJME.CZ"}]'>
+								<label class="checkbox-icon" for="frm-agree"></label>
+								<label class="checkbox-label" for="frm-agree">Souhlasím s
+									<a href="https://www.darujme.cz/podminky-uzivani/" target="_blank">provozními podmínkami DARUJME.CZ</a>.</label>
+								</div>
+						</div>
+
+						<button type="submit" class="btn view-primary view-high">Přejít k platbě</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div id="frequencypopup" class="mfp-hide popup center">
+			<h2 class="title view-article">Zvolte prosíme nižší částku a podpořte nás raději pravidelně. Děkujeme.</h2>
+		</div>
+	</div>
+
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="/jquery.magnific-popup.min.js" defer></script>
+	<script src="/script.js" defer></script>
+	<script src="//nette.github.io/resources/js/netteForms.js"></script>
+
+</body>
+</html>
